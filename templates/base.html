@@ -6,10 +6,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css')}}">
 </head>
 <body>
-    <ul>
-        <li><a href="{{ url_for('queue') }}"><div class="heading">Kø</div></a></li>
-        <li><a href="{{ url_for('tasks') }}"><div class="heading">Opgaver</div></a></li>
-    </ul>
     <div class="content">
         {% block content %} {% endblock %}
     </div>

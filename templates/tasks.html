@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="heading">{% block title %} Scripts {% endblock %}</h1>
+    <ul>
+        <li><a href="{{ url_for('queue') }}"><div class="headinghvid">Kørsler</div></a></li>
+        <li><a class="active" href="{{ url_for('tasks') }}"><div class="headinghvid">Opgaver</div></a></li>
+    </ul>
+    <h1 class="headingsort">{% block title %} Scripts {% endblock %}</h1>
     {% for script in scripts %}
-        <div class='script'>
+        <div class='box'>
             <h2>Name: {{ script['scriptname'] }}</h2>
             <p><b>Documentation: </b></p>
             {% for para in script['docstring'] %}

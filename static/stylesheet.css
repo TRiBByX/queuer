@@ -1,5 +1,5 @@
 body {
-    background-color: #000000;
+    background-color: #ffffff;
 }
 .message {
     padding: 10px;
@@ -21,18 +21,15 @@ body {
     border: #4d4d4d;
     border-width: 1px;
 }
-nav a {
-    color: #ffffff;
-    font-size: 3em;
-    margin-left: 50px;
-    text-decoration: none;
+
+.headingsort {
+    color: #000000;
+    font-size: 30px;
 }
-.content {
-    margin-left: 60px;
-}
-.heading {
+
+.headinghvid {
     color: #ffffff;
-    font-size: xx-large;
+    font-size: 30px;
 }
 
 ul {
@@ -40,7 +37,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #000000;
+    background-color: #363636;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -59,5 +56,28 @@ li a {
 }
 
 li a:hover:not(.active) {
-    background-color: #003ce2;
+    background-color: #177500;
+}
+
+.active {
+    background-color: #177500;
+  }
+
+
+.box {
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12)
+    ;
+
+    min-height: 20px;
+    width: 45%;
+    margin: 50px auto;
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
 }
