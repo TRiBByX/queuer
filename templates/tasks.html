@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Messages {% endblock %}</h1>
-    {% for scrip in scripts %}
-        <div class='scriptbox'>
-            <h3>{{ script['name'] }}</h3>
-            <p>{{ script['man'] }}</p>
+    <h1 class="heading">{% block title %} Scripts {% endblock %}</h1>
+    {% for script in scripts %}
+        <div class='script'>
+            <h2>Name: {{ script['scriptname'] }}</h2>
+            <p><b>Documentation: </b></p>
+            {% for para in script['docstring'] %}
+            <p class="docstring">{{ para }}</p>
+            {% endfor %}
         </div>
     {% endfor %}
 {% endblock %}

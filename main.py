@@ -26,8 +26,12 @@ def queue():
 
 @app.route("/tasks")
 def tasks():
-    runner.get_scripts()
-    return render_template('tasks.html')
+    Scripts = runner.get_scripts()
+    scripts = []
+    for k, v in Scripts.items():
+        scripts.append({'scriptname': v.scriptname, 'docstring': v.docstring.split('\n')})
+    print(scripts)
+    return render_template('tasks.html', scripts=scripts)
 
 
 
