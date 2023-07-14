@@ -26,6 +26,7 @@ def queue():
 
 @app.route("/tasks")
 def tasks():
+    runner.get_scripts()
     return render_template('tasks.html')
 
 
