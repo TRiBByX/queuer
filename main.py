@@ -14,6 +14,10 @@ def main():
 def redir():
     return redirect(url_for('queue'))
 
+@app.route('/run/<string:script>', methods=['GET', 'POST'])
+def run(script):
+    return f'<h1> Run: {script}!</h1>'
+
 
 @app.route("/queue", methods=('GET', 'POST'))
 def queue():
@@ -21,8 +25,12 @@ def queue():
                  'content': 'Message one content'},
                 {'title': 'Message two',
                  'content': 'Message two content'}]
+    archive = [{'title': 'Message One',
+                 'content': 'Message one content'},
+                {'title': 'Message two',
+                 'content': 'Message two content'}]
 
-    return render_template('queue.html', messages=messages)
+    return render_template('queue.html', messages=messages, archive=archive)
 
 @app.route("/tasks")
 def tasks():
@@ -30,7 +38,6 @@ def tasks():
     scripts = []
     for k, v in Scripts.items():
         scripts.append({'scriptname': v.scriptname, 'docstring': v.docstring.split('\n')})
-    print(scripts)
     return render_template('tasks.html', scripts=scripts)
 
 

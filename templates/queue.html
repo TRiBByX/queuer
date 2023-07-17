@@ -5,11 +5,19 @@
         <li><a class="active" href="{{ url_for('queue') }}"><div class="headinghvid">Kørsler</div></a></li>
         <li><a href="{{ url_for('tasks') }}"><div class="headinghvid">Opgaver</div></a></li>
     </ul>
-    <h1 class="headingsort">{% block title %} Opgaver {% endblock %}</h1>
+    <h1 class="headingsort">{% block title %} Kørsler {% endblock %}</h1>
+    <h1 class="headingsort">Aktuelle</h1>
     {% for message in messages %}
-        <div class='message'>
+        <div class='box'>
             <h3>{{ message['title'] }}</h3>
             <p>{{ message['content'] }}</p>
+        </div>
+    {% endfor %}
+    <h1 class="headingsort">Arkiv</h1>
+    {% for task in archive %}
+        <div class='box'>
+            <h3>{{ task['title'] }}</h3>
+            <p>{{ task['content'] }}</p>
         </div>
     {% endfor %}
 {% endblock %}
