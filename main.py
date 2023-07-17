@@ -1,6 +1,9 @@
 # Imports
 from flask import Flask, render_template, redirect, url_for
 from scripts import runner
+from helpers import db_helper
+
+import sqlite3
 
 # Global
 app = Flask(__name__)
@@ -39,10 +42,6 @@ def tasks():
     for k, v in Scripts.items():
         scripts.append({'scriptname': v.scriptname, 'docstring': v.docstring.split('\n')})
     return render_template('tasks.html', scripts=scripts)
-
-
-
-
 
 
 if __name__ == "__main__":

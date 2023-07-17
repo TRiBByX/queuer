@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <ul>
+        <li><a class="active" href="{{ url_for('queue') }}"><div class="headinghvid">Kørsler</div></a></li>
+        <li><a href="{{ url_for('tasks') }}"><div class="headinghvid">Opgaver</div></a></li>
+    </ul>
+{% endblock %}
