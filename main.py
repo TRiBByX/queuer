@@ -1,8 +1,9 @@
-# Imports
+# from imports
 from flask import Flask, render_template, redirect, url_for
 from scripts import runner
 from helpers import db_helper
 
+# imports
 import sqlite3
 
 # Global
@@ -10,6 +11,7 @@ app = Flask(__name__)
 
 # Functions
 def main():
+    dbh = db_helper.db_helper()
     app.run('0.0.0.0', "8080", debug=True)
 
 # Routes
