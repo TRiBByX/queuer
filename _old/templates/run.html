@@ -22,7 +22,7 @@
                     <h3>Parametre</h3>
                     {% for option in script.options %}
                             <label>{{ option }}</label>
-                            <input type="text" name="option" placeholder="Enter option">{{ request.form['option'] }}</input><br>
+                            <input type="text" name="{{ option }}" placeholder="Enter option">{{ request.form[option] }}</input><br>
                     {% endfor %}
                 </div>
                 <button type="submit">

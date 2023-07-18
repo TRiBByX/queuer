@@ -1,7 +1,7 @@
 # imports
 from flask import Flask, render_template, redirect, url_for, flash, request
 from scripts import runner
-from helpers import db_helper
+from model import *
 from datetime import date, datetime
 
 
@@ -36,12 +36,15 @@ def scheduler(script):
     if script.lower() in Scripts:
         script = Scripts[script.lower()]
     if request.method == "POST":
-        jobname = request.form['jobname']
-        options = [option for key, option in request.form.items()
-                   if key in script.options]
-        exectime = request.form['exectime']
-        exectime = exectime[:10] + ' ' + exectime[-5:]
-        exectime = datetime.strptime(exectime, "%Y-%m-%d %H:%M")
+        try:
+            jobname = request.form['jobname']
+            options = [option for key, option in request.form.items()
+                       if key in script.options]
+            exectime = request.form['exectime']
+            exectime = exectime[:10] + ' ' + exectime[-5:]
+            exectime = datetime.strptime(exectime, "%Y-%m-%d %H:%M")
+        except Exception as e:
+            print(e)
 
         if not jobname:
             flash('Job name is required')
@@ -53,6 +56,8 @@ def scheduler(script):
             flash('Time has to be in the future')
         else:
             redirect(url_for('queue'))
+        
+
 
     return render_template('run.html', script=script.to_dict(),
                            date=date.today())
