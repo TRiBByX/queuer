@@ -19,7 +19,7 @@ class db_helper:
             status -> 'Pending', 'Running', 'Done', 'Archive'
             '''
             sql = '''CREATE TABLE jobs(id INTEGER PRIMARY KEY autoincrement,
-                                       job_name TEXT, job_parameters TEXT,
+                                       job_name TEXT, job_params TEXT,
                                        time_added DATE, exec_time TEXT, 
                                        status TEXT)'''
             self.conn.execute(sql)
@@ -27,6 +27,6 @@ class db_helper:
         else:
             self.conn = sqlite3.connect('jobs.db')
 
-    def add_to_database(conn, script):
-        conn.execute('''INSERT INTO active (script_name, script_parameters,
-                                            time_added, status)''')
+    def add_to_database(conn, job):
+        conn.execute('''INSERT INTO active (job_name, job_params,
+                                            time_added, exec_time, status)''')

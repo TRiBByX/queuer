@@ -1,8 +1,45 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <ul>
-        <li><a class="active" href="{{ url_for('queue') }}"><div class="headinghvid">Kørsler</div></a></li>
-        <li><a href="{{ url_for('tasks') }}"><div class="headinghvid">Opgaver</div></a></li>
-    </ul>
+    {% for message in get_flashed_messages() %}
+        <div class="alert">{{ message }}</div>
+    {% endfor %}
+    <h1>Setup {{ script.scriptname }} job</h1>
+    <div class="row">
+        <div class="column">
+            <form id="form" method="post">
+                <h2>Schedule</h2>
+                <div class="form-control">
+                    <label for="jobname">Job Name</label>
+                    <input type="text" name="jobname" placeholder="Enter job name">{{ request.form['jobname'] }}</input>
+                </div>
+
+                <div class="form-control">
+                    <label for="exectime">Exec time</label>
+                    <input type="datetime-local" name="exectime" min="{{ date }}">{{ request.form['exectime'] }}</input>
+                </div>
+                <div class="form-control">
+                    <h3>Parametre</h3>
+                    {% for option in script.options %}
+                            <label>{{ option }}</label>
+                            <input type="text" name="option" placeholder="Enter option">{{ request.form['option'] }}</input><br>
+                    {% endfor %}
+                </div>
+                <button type="submit">
+                    Schedule
+                </button>
+            </form>
+        </div>
+        <div class="column">
+            <div class="details">
+                <h2>Details</h2>
+                <h2>{{ script.name }}</h2>
+                <div class="docstring"><b>Author:</b> {{ script.author }}</div>
+                <div class="docstring"><b>Options:</b> {% for option in script.options %}{{ option }} {% endfor %}</div>
+                <div class="docstring"><b>Docstring:</b><br> {{ script.docstring }}</div>
+            </div>
+        </div>
+    </div>
+    
+
 {% endblock %}

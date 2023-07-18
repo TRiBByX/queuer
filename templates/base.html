@@ -7,6 +7,11 @@
 </head>
 <body>
     <div class="content">
+        <ul>
+            <li><a {% if request.path == '/queue' %} class="active" {% endif %} href="{{ url_for('queue') }}"><div class="headinghvid">Kørsler</div></a></li>
+            <li><a {% if request.path == '/tasks' %} class="active" {% endif %} href="{{ url_for('tasks') }}"><div class="headinghvid">Scripts</div></a></li>
+            <li><a {% if '/schedule' in request.path %} class="active" {% endif %} href="{{ url_for('scheduler', script='empty') }}"><div class="headinghvid">Scheduler</div></a></li>
+        </ul>
         {% block content %} {% endblock %}
     </div>
 </body>

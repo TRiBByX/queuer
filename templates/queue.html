@@ -1,10 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <ul>
-        <li><a class="active" href="{{ url_for('queue') }}"><div class="headinghvid">Kørsler</div></a></li>
-        <li><a href="{{ url_for('tasks') }}"><div class="headinghvid">Opgaver</div></a></li>
-    </ul>
     <h1 class="headingsort">{% block title %} Kørsler {% endblock %}</h1>
     <h1 class="headingsort">Aktuelle</h1>
     {% for message in messages %}

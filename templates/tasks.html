@@ -1,14 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <ul>
-        <li><a href="{{ url_for('queue') }}"><div class="headinghvid">Kørsler</div></a></li>
-        <li><a class="active" href="{{ url_for('tasks') }}"><div class="headinghvid">Opgaver</div></a></li>
-    </ul>
     <h1 class="headingsort">Scripts</h1>
     {% for script in scripts %}
         <div class="flip-card">
-            <a href="{{ url_for('run', script=script['scriptname']) }}">
+            <a href="{{ url_for('scheduler', script=script['scriptname']) }}">
                 <div class="flip-card-inner">
                 <div class="flip-card-front">
                     <h2>{{ script['scriptname'] }}</h2>
@@ -16,7 +12,7 @@
                 <div class="flip-card-back">
                     <h1>Description</h1> 
                     {% for para in script['docstring'] %}
-                    <p class="docstring">{{ para }}</p>
+                    <div class="docstring">{{ para }}</div>
                     {% endfor %}
                 </div>
                 </div>

@@ -9,8 +9,16 @@ class Script:
         self.author = author
         self.options = options
 
+    def to_dict(self):
+        return {
+            'scriptname': self.scriptname,
+            'docstring': self.docstring,
+            'author': self.author,
+            'options': self.options
+        }
+
     def __str__(self):
-        return f"Scriptname: {self.scriptname}\nAuthor: {self.author}\nOptions: {self.options}\nDocstring:\n{self.docstring}"
+        return f'''Scriptname: {self.scriptname}\nAuthor: {self.author}\nOptions: {self.options}\nDocstring:\n{self.docstring}'''
 
 
 def get_scripts():
@@ -28,5 +36,4 @@ def get_scripts():
                                for docline in script_doc_split[4:-1]])
         Scripts[script] = Script(scriptname=name, author=author,
                                  docstring=docstring, options=options)
-
     return Scripts

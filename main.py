@@ -1,18 +1,19 @@
 # imports
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, flash, request
 from scripts import runner
 from helpers import db_helper
+from datetime import date, datetime
 
 
 # Global
 app = Flask(__name__)
+app.config['SECRET_KEY'] = '!!!!!!!!!'
 
 # Functions
 
 
 def main():
-    dbh = db_helper.db_helper()
-    app.run('0.0.0.0', "8080", debug=True)
+    app.run('127.0.0.1', "8080", debug=True)
 
 
 @app.route('/')
@@ -20,12 +21,44 @@ def redir():
     return redirect(url_for('queue'))
 
 
-@app.route('/run/<string:script>', methods=['GET', 'POST'])
-def run(script):
-    return f'<h1> Run: {script}!</h1>'
+@app.route('/schedule/<string:script>', methods=['GET', 'POST'])
+def scheduler(script):
+
+    if script == 'empty':
+        return render_template('run.html',
+                               script={'scriptname': 'testname',
+                                       'docstring': 'testdocstring',
+                                       'author': 'testauthor',
+                                       'options': ['testoption']},
+                                date=date.today())
+
+    Scripts = runner.get_scripts()
+    if script.lower() in Scripts:
+        script = Scripts[script.lower()]
+    if request.method == "POST":
+        jobname = request.form['jobname']
+        options = [option for key, option in request.form.items()
+                   if key in script.options]
+        exectime = request.form['exectime']
+        exectime = exectime[:10] + ' ' + exectime[-5:]
+        exectime = datetime.strptime(exectime, "%Y-%m-%d %H:%M")
+
+        if not jobname:
+            flash('Job name is required')
+        elif not options:
+            flash('Job options are required')
+        elif not exectime:
+            flash('Exec time is required')
+        elif exectime < datetime.now():
+            flash('Time has to be in the future')
+        else:
+            redirect(url_for('queue'))
+
+    return render_template('run.html', script=script.to_dict(),
+                           date=date.today())
 
 
-@app.route("/queue", methods=('GET', 'POST'))
+@app.route("/queue")
 def queue():
     messages = [{'title': 'Message One',
                  'content': 'Message one content'},
