@@ -2,3 +2,4 @@ scripts/__pycache__/runner.cpython-310.pyc
 scripts/*
 *.pyc
 __pycache__
+settings.json
