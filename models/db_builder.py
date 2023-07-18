@@ -1,6 +1,8 @@
 import os
 import sqlite3
 
+debug = True
+
 
 def db_exists():
     return 'queuer.db' in os.listdir('db/')
@@ -38,5 +40,5 @@ def db_build():
         conn.commit()
 
 
-if __name__ == '__main__':
+if __name__ == '__main__' and debug is True:
     db_build()
