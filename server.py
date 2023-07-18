@@ -5,3 +5,5 @@ from static import *
 from db import *
 
 
+def main():
+    pass

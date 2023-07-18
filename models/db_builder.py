@@ -8,6 +8,10 @@ def db_exists():
     return 'queuer.db' in os.listdir('db/')
 
 
+def db_populate():
+    pass
+
+
 def db_build():
     # Builds 1 database with three tables. 
     # Archive:
@@ -22,23 +26,24 @@ def db_build():
         sql = '''CREATE TABLE queue(id INTEGER PRIMARY KEY autoincrement,
                                     jobname TEXT, parameters TEXT, time DATE,
                                     status TEXT)'''
-        conn.execute(sql)
-        conn.commit()
+        db_executer(sql)
         sql = '''CREATE TABLE scripts(id INTEGER PRIMARY KEY autoincrement,
                                      name TEXT,
                                      code TEXT,
                                      author TEXT,
                                      params TEXT)'''
-        conn.execute(sql)
-        conn.commit()
+        db_executer(sql)
         sql = '''CREATE TABLE archive(id INTEGER PRIMARY KEY autoincrement,
                                     jobname TEXT,
                                     parameters TEXT,
                                     time DATE,
                                     status TEXT)'''
-        conn.execute(sql)
-        conn.commit()
+        db_executer(sql)
 
+
+def db_executer(conn, sql):
+    conn.execute(sql)
+    conn.commit()
 
 if __name__ == '__main__' and debug is True:
     db_build()
