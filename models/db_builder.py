@@ -13,7 +13,7 @@ def db_populate():
 
 
 def db_build():
-    # Builds 1 database with three tables. 
+    # Builds 1 database with three tables.
     # Archive:
     #   Previously run jobs.
     # Scripts:
@@ -38,12 +38,13 @@ def db_build():
                                     parameters TEXT,
                                     time DATE,
                                     status TEXT)'''
-        db_executer(sql)
+        db_executer(conn, sql)
 
 
 def db_executer(conn, sql):
     conn.execute(sql)
     conn.commit()
+
 
 if __name__ == '__main__' and debug is True:
     db_build()
