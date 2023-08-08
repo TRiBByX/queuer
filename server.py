@@ -4,6 +4,17 @@ from models import *
 from static import *
 from db import *
 
+app = Flask('Queuer')
+
 
 def main():
-    pass
+    app.run('127.0.0.1', '8080', debug=True)
+
+
+@app.route('/')
+def front_page():
+    return render_template('')
+
+
+if __name__ == '__main__':
+    main()

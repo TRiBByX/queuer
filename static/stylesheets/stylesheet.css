@@ -1,0 +1,238 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  
+  body {
+      background-color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .column {
+    float: left;
+    width: 50%;
+  }
+  
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .message {
+      padding: 10px;
+      margin: 10px;
+      background-color: #ffffff;
+      box-shadow: 5px 5px #888888;
+      border: #4d4d4d;
+      border-width: 1px;
+  }
+  .script {
+      padding: 10px;
+      margin: 10px;
+      background-color: #ffffff;
+      box-shadow: 5px 5px #888888;
+      border: #4d4d4d;
+      border-width: 1px;
+  }
+  
+  .headingsort {
+      color: #000000;
+      font-size: 30px;
+  }
+  
+  .headinghvid {
+      color: #ffffff;
+      font-size: 30px;
+  }
+  
+  .alert {
+    padding: 20px;
+    margin: 5px;
+    color: #970020;
+    background-color: #ffd5de;
+  }
+  
+  ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #363636;
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+  }
+  
+  li {
+      float: left;
+  }
+  
+  li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+      background-color: #2980b9;
+  }
+  
+  .active {
+      background-color: #2980b9;
+    }
+  
+  
+  .box {
+      box-shadow:
+      0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+      0 12.5px 10px rgba(0, 0, 0, 0.06),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+      0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+      0 100px 80px rgba(0, 0, 0, 0.12)
+      ;
+  
+      min-height: 20px;
+      width: 45%;
+      margin: 50px auto;
+      background: white;
+      border-radius: 8px;
+      padding: 10px;
+  }
+  
+  .flip-card {
+      background-color: transparent;
+      width: 400px;
+      height: 500px;
+      perspective: 1000px;
+      padding: 10px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+    
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
+    
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+    
+    .docstring {
+      margin: 20px;
+      font-style: italic;
+      text-align: left;
+    }
+    
+    .flip-card-front {
+      background-color: #bbb;
+      color: black;
+    }
+    
+    .flip-card-back {
+      background-color: #2980b9;
+      color: white;
+      transform: rotateY(180deg);
+      text-align: left;
+      overflow: hidden;
+      overflow-y: auto;
+    }
+  
+  .details  {
+      background-color: #fff;
+      max-width: 90%;
+      margin: 50px auto;
+      padding: 30px 20px;
+      box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+    }
+  
+  
+    /* Styling the Body element i.e. Color,
+          Font, Alignment */
+  body {
+    background-color: #ffffff;
+    font-family: Verdana;
+    text-align: center;
+  }
+  
+  /* Styling the Form (Color, Padding, Shadow) */
+  form {
+    background-color: #fff;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px 20px;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Styling form-control Class */
+  .form-control {
+    text-align: left;
+    margin-bottom: 25px;
+  }
+  
+  .label {
+    padding: 10px;
+  }
+  
+  /* Styling form-control Label */
+  .form-control label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  /* Styling form-control input,
+  select, textarea */
+  .form-control input,
+  .form-control select,
+  .form-control textarea {
+    border: 1px solid #777;
+    border-radius: 2px;
+    font-family: inherit;
+    padding: 10px;
+    display: block;
+    width: 95%;
+  }
+  
+  /* Styling form-control Radio
+  button and Checkbox */
+  .form-control input[type="radio"],
+  .form-control input[type="checkbox"] {
+    display: inline-block;
+    width: auto;
+  }
+  
+  /* Styling Button */
+  button {
+    background-color: #ffffff;
+    border: 1px solid #777;
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: 21px;
+    display: block;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+  
